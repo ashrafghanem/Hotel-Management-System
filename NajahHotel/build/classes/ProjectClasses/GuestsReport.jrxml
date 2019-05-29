@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="c33ea94e-2a9d-4249-80d0-84f64df8262f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     PERSON."ID" AS PERSON_ID,
+     PERSON."FNAME" AS PERSON_FNAME,
+     PERSON."MNAME" AS PERSON_MNAME,
+     PERSON."LNAME" AS PERSON_LNAME,
+     PERSON."MOBILE_NO" AS PERSON_MOBILE_NO,
+     PERSON."GENDER" AS PERSON_GENDER,
+     PERSON."EMAIL" AS PERSON_EMAIL,
+     GUEST."TOTAL_PAYMENT" AS GUEST_TOTAL_PAYMENT
+FROM
+     "HOTELDB"."PERSON" PERSON INNER JOIN "HOTELDB"."GUEST" GUEST ON PERSON."ID" = GUEST."GUEST_ID"]]>
+	</queryString>
+	<field name="PERSON_ID" class="java.math.BigDecimal"/>
+	<field name="PERSON_FNAME" class="java.lang.String"/>
+	<field name="PERSON_MNAME" class="java.lang.String"/>
+	<field name="PERSON_LNAME" class="java.lang.String"/>
+	<field name="PERSON_MOBILE_NO" class="java.lang.String"/>
+	<field name="PERSON_GENDER" class="java.lang.String"/>
+	<field name="PERSON_EMAIL" class="java.lang.String"/>
+	<field name="GUEST_TOTAL_PAYMENT" class="java.lang.Double"/>
+	<group name="GUEST_TOTAL_PAYMENT">
+		<groupExpression><![CDATA[$F{GUEST_TOTAL_PAYMENT}]]></groupExpression>
+		<groupHeader>
+			<band height="9"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="30"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band height="575" splitType="Stretch">
+			<image>
+				<reportElement x="-17" y="-16" width="836" height="591" uuid="abeb70ff-563d-4e7d-9479-3d85b2217bc5"/>
+				<imageExpression><![CDATA["ProjectClasses\\guestReportBG.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="116" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="3" y="4" width="798" height="20" backcolor="#333333" uuid="2eabeb0d-39b6-4e7f-a9b6-19ff4086f1f8"/>
+				<staticText>
+					<reportElement style="Column header" x="1" y="0" width="83" height="15" uuid="0162023f-2331-4cb6-a45b-02423d827f0b"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[ID]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="84" y="0" width="110" height="15" uuid="33d557fb-9fb3-42f1-9958-7717ec4b23fe"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[First Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="194" y="0" width="73" height="15" uuid="2d61930d-78c9-49e8-9d7e-7697de99efc6"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Mid Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="267" y="0" width="91" height="15" uuid="1d30f08b-b30d-4d02-8509-d2a84ac8821e"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Last Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="358" y="0" width="126" height="15" uuid="b682e7fd-8ba2-4c2f-82c4-269c28d92423"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Mobile NO.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="484" y="0" width="52" height="15" uuid="b7eb1cbd-158b-414f-8d4f-dfe874fc917c"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Gender]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="536" y="0" width="158" height="15" uuid="7695d488-9b0b-4267-984f-6d9d6df8c3cf"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[E-Mail Address]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="694" y="0" width="100" height="15" forecolor="#FFFFFF" uuid="38c5b766-2f29-4d2b-8c6c-eb2289cc9475"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total Payment]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<frame>
+				<reportElement x="4" y="1" width="798" height="15" uuid="ea577864-db8f-4326-8993-21ad638efce7"/>
+				<textField>
+					<reportElement style="Detail" x="535" y="0" width="158" height="15" uuid="fef95d9d-3d4d-4961-a9cd-894316973bda"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{PERSON_EMAIL}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="SubTitle" x="693" y="0" width="100" height="15" forecolor="#000000" uuid="444d9180-da60-40ec-82ad-a6fe75c29bbe"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{GUEST_TOTAL_PAYMENT}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="4" y="22" width="798" height="1" uuid="1579b714-c3e8-4f7b-8cff-06685bd9d71b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="4" y="0" width="83" height="15" uuid="ce848df5-6628-492d-94b1-ca1d3d51d5aa"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PERSON_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="87" y="0" width="110" height="15" uuid="4f45b434-031c-460a-b27a-8ae527ca8f58"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PERSON_FNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="197" y="0" width="73" height="15" uuid="4bc129e2-f920-479b-ae4f-41783f5098d8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PERSON_MNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="270" y="0" width="91" height="15" uuid="387caf56-bdac-43dd-9c4b-67ad672d8c3d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PERSON_LNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="361" y="0" width="126" height="15" uuid="db71bb95-2ae2-46df-8d75-8370720c0583"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PERSON_MOBILE_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="487" y="0" width="52" height="15" uuid="2b71bde9-f721-4e8e-9c59-f06e1e148cc9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PERSON_GENDER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="cb3eff9e-275e-44a1-86d1-ed8d0d2b0181"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="0" width="147" height="20" uuid="57c7f1af-45fb-495f-adb9-1a3a38677840"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hotel Guests Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="387" y="0" width="100" height="20" uuid="7e79a4ca-d435-48f8-8ad7-f7b49f753f57"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

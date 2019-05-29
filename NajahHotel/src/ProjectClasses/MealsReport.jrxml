@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="3902cdae-092f-4c4a-b1b0-a37648b9b346">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     MEAL."NAME" AS MEAL_NAME,
+     MEAL."PRICE" AS MEAL_PRICE
+FROM
+     "HOTELDB"."MEAL" MEAL]]>
+	</queryString>
+	<field name="MEAL_NAME" class="java.lang.String"/>
+	<field name="MEAL_PRICE" class="java.lang.Double"/>
+	<background>
+		<band height="822" splitType="Stretch">
+			<image>
+				<reportElement x="-18" y="-18" width="590" height="840" uuid="acf75b0f-74d9-42a4-ac16-44ff234829c2"/>
+				<imageExpression><![CDATA["ProjectClasses\\mealReportBG.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="126" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="45" y="5" width="471" height="20" backcolor="#333333" uuid="cbeca8f7-22dc-4442-bc00-f0dbe4455080"/>
+				<staticText>
+					<reportElement style="Column header" x="14" y="0" width="216" height="15" uuid="92aebfad-c9aa-46eb-9ca1-718dd4bf93a9"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Meal Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="229" y="0" width="229" height="15" uuid="7101e7b4-20d9-4e84-943a-37cd5a93a8dd"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Price]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<frame>
+				<reportElement x="46" y="1" width="470" height="15" uuid="44adb96f-fa9b-457d-9ce1-d0ca7e2ef353"/>
+				<textField>
+					<reportElement style="Detail" x="229" y="0" width="229" height="15" uuid="f3430b48-8e3a-44f9-96a0-bc37188b492b"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{MEAL_PRICE}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="51" y="21" width="458" height="1" uuid="5584f5db-7d10-47fc-aa3c-0668a9672e6e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="58" y="2" width="216" height="15" uuid="2807a8c3-d780-4742-9ba0-476690aba583"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{MEAL_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="100" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="424" y="72" width="131" height="20" forecolor="#000000" uuid="cc599226-92f6-44f3-a6c9-74baabcf772e"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="3" y="72" width="138" height="20" forecolor="#000000" uuid="ce177210-b639-44c4-9f48-e7db294108d1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hotel Meals Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="263" y="72" width="100" height="20" uuid="229a4029-e26f-47b9-bf17-63ccc05e0646"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
